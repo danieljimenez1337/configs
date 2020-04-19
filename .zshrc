@@ -1,16 +1,14 @@
-# If you come from bash you might have to change your $PATH.# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# switching monitor mode custom command, will need adjustment when
-# changing physical arrangements
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
-export QT_QPA_PLATFORMTHEME=qt5ct
+export ZSH="/home/danny/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -28,8 +26,14 @@ ZSH_THEME="spaceship"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -64,7 +68,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-completions colorize colored-man-pages)
+plugins=(git zsh-autosuggestions  zsh-completions colorize)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,16 +81,13 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='vim'
+#   export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -96,12 +97,7 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# modify vi-mode plugin variable for custom mode indicator
-# MODE_INDICATOR="%{$fg_bold[red]%} -- NORMAL -- %{$reset_color%}"
-# RPROMPT='$(vi_mode_prompt_info)'
-
-bindkey -M vicmd "^R" fzf-history-widget
+bindkey -M vicmd "^H" fzf-history-widget
 
 TRAPALRM() {
     zle reset-prompt
@@ -111,7 +107,7 @@ TMOUT=300
 bindkey '^ ' autosuggest-accept
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source /usr/share/fzf/shell/key-bindings.zsh
+#source /usr/share/fzf/shell/key-bindings.zsh
 
 PATH=$PATH:${HOME}/.local/bin
 
@@ -131,35 +127,7 @@ stty start undef
 stty stop undef
 setopt noflowcontrol
 
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-SPACESHIP_PROMPT_ORDER=(
-  time          # Time stamps section
-  user          # Username section
-  dir           # Current directory section
-  git           # Git section (git_branch + git_status)
-  golang        # Go section
-  rust          # Rust section
-  docker        # Docker section
-  aws           # Amazon Web Services section
-  venv          # virtualenv section
-  conda         # conda virtualenv section
-  pyenv         # Pyenv section
-  dotnet        # .NET section
-  kubecontext   # Kubectl context section
-  exec_time     # Execution time
-  line_sep      # Line break
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-export GROFF_NO_SGR=1
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 alias vim="nvim"
 alias vi="nvim"
-
-# Setting fd as the default source for fzf
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+source /home/danny/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
